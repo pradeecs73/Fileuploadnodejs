@@ -1,0 +1,53 @@
+<html>
+<head>
+<title>
+AJAX JQuery Test
+</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>  
+<script>
+function validate() {
+
+
+
+
+
+ data = new FormData();
+    data.append('file', $('#file')[0].files[0]);
+
+
+      $.ajax ({
+
+			 
+
+                        type: "POST",
+			url:'http://192.168.2.6:3000/resume',
+                         processData: false,
+                        contentType: false,
+			data: data,
+                        
+			
+                            
+                        
+                        success: function(data) {    
+                            alert('success'+JSON.stringify(data));
+			                    
+                           },
+                           error: function(data) {
+                                          alert("Msg: "+ data.status + ": " + data.statusText);
+
+                           }
+                           
+                           
+                       }); 
+
+
+}
+</script>
+</head>
+<body>
+<form>
+    <input type="file" id="file" name="file">
+    <input type="button" value="upload" onclick="validate()">
+</form>
+</body>
+</html>
